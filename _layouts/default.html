@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% seo %}
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% if site.favicon %}
+<link rel="shortcut icon" href="{{ site.favicon }}">
+{% endif %}
+<!-- Scripts for Dropdown Buttons -->
+{% include button-script.html %}
+<!-- Update the config variable and html file with your GA snippet -->
+{% if site.google-analytics %}
+{% include {{ site.google-analytics }} %}
+{% endif %}
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        {% if site.menu %}
+        {% include {{ site.menu }} %}
+        {% endif %}
+        {% if site.logo %} 
+        <img src="{{ site.logo }}"><h1>{{ site.title }}</h1>
+        {% else %}
+        <h1>{{ site.title }}</h1>
+        {% endif %}
+        {% if page.print %}
+        {% include {{ page.print }} %}
+        {% endif %}
+        <ul>
+          {% if site.link1-url %}
+          <li><a target="_blank" href="{{ site.link1-url }}">{{ site.link1-text }}</a></li>
+          {% else %}
+          {% if site.link1-page %}
+          <li><a href="{{ site.link1-page }}">{{ site.link1-text }}</a></li>
+          {% endif %}
+          {% endif %}
+          {% if site.link2-url %}
+          <li><a target="_blank" href="{{ site.link2-url }}">{{ site.link2-text }}</a></li>
+          {% else %}
+          {% if site.link2-page %}
+          <li><a href="{{ site.link2-page }}">{{ site.link2-text }}</a></li>
+          {% endif %}
+          {% endif %}
+          {% if site.link3-url %}
+          <li><a target="_blank" href="{{ site.link3-url }}">{{ site.link3-text }}</a></li>
+          {% else %}
+          {% if site.link3-page %}
+          <li><a href="{{ site.link3-page }}">{{ site.link3-text }}</a></li>
+          {% endif %}
+          {% endif %}
+        </ul>
+        <p>{{ site.description | default: site.github.project_tagline }}</p>
+        {% if page.toc %}
+        {% include {{ page.toc }} %}
+        {% endif %}
+      </header>
+      <div class="content">
+
+      {{ content }}
+
+      </div>
+      <div class="footer">
+      <div class="grid-5050">
+      {% if site.email %}
+      <div class="item1">
+      <p>Contact: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      </div>
+      {% else %}
+      {% if site.contact %}
+      <div class="item1">
+      <p>{{ site.contact }}</p>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if site.copyright %}
+      <div class="item2">
+      <p class="copyright">&copy;{{ site.copyright }}</p>
+      </div>
+      {% endif %}
+      </div>
+      {% if site.tagline and site.tagline2 %}
+      <p class="tagline">{{ site.tagline }} <a target="-blank" href="{{ site.tagline2-url }}">{{ site.tagline2 }}</a></p>
+      {% else %}
+      {% if site.tagline %}
+      <p class="tagline">{{ site.tagline }}</p>
+      {% else %}
+      {% if site.tagline2 %}
+      <p class="tagline"><a target="-blank" href="{{ site.tagline2-url }}">{{ site.tagline2 }}</a></p>
+      {% endif %}
+      {% endif %}
+      {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
